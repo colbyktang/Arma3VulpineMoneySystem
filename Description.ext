@@ -1,0 +1,10 @@
+class CfgUnitInsignia
+{
+	class Vulpine
+	{
+		displayName = "Vulpine Vanguard White"; // Name displayed in Arsenal
+		author = "Buttwind"; // Author displayed in Arsenal
+		texture = "emblem2.png"; // Image path
+		textureVehicle = ""; // Does nothing currently, reserved for future use
+	};
+};
