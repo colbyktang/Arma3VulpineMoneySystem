@@ -39,7 +39,7 @@ if (isServer) then {
 					if (typeof _killed isKindOf "Tank") then {_value = _tank};
 					if (typeof _killed isKindOf "Air") then {_value = _aircraft};
 				
-					[[_value], "money.sqf"] remoteExec ["execVM", (owner _source)]; 
+					[[_value], "VulpineMoney\money.sqf"] remoteExec ["execVM", (owner _source)]; 
 				}
 			};
 
@@ -47,7 +47,7 @@ if (isServer) then {
 				
 				if (!isNull _source) then {
 					_source sideChat format ["BLUE ON BLUE -$1.00", _teamkill];
-					[[_teamkill], "money.sqf"] remoteExec ["execVM", (owner _source)]; 
+					[[_teamkill], "VulpineMoney\money.sqf"] remoteExec ["execVM", (owner _source)]; 
 				}
 			};
 			
@@ -55,7 +55,7 @@ if (isServer) then {
 				
 				if (!isNull _source) then {
 					_source sideChat format ["CIVILIAN CASUALITY -$%1.00", _civilian];
-					[[_civilian], "money.sqf"] remoteExec ["execVM", (owner _source)]; 
+					[[_civilian], "VulpineMoney\money.sqf"] remoteExec ["execVM", (owner _source)]; 
 				}
 			};
 		}
@@ -64,7 +64,7 @@ if (isServer) then {
 	addMissionEventHandler ["PlayerDisconnected",
 	{
 		params ["_id", "_uid", "_name", "_jip", "_owner"];
-		[[], "addSaveAction.sqf"] remoteExec ["execVM", _owner]; 
+		[[], "VulpineMoney\addSaveAction.sqf"] remoteExec ["execVM", _owner]; 
 		saveProfileNamespace;
 	}];
 	
@@ -73,4 +73,6 @@ if (isServer) then {
 		saveProfileNamespace;
 	}];
 	
+	[vulpine_accountant,"SIT_AT_TABLE","ASIS",arrow] call BIS_fnc_ambientAnim;
+	vulpine_accountant addAction ["Save Money and Stats","VulpineMoney\addSaveAction.sqf"];
 };
